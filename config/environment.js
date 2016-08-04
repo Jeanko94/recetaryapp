@@ -3,9 +3,21 @@
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'recetaryapp',
+    podModulePrefix: 'recetaryapp/pods',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
+    firebase: {
+      apiKey: 'AIzaSyAULCmQ9rZJyb824hqtyttJF1j45k2fkW8',
+      authDomain: 'recetarydemo.firebaseapp.com',
+      databaseURL: 'https://recetarydemo.firebaseio.com',
+      storageBucket: 'recetarydemo.appspot.com',
+    },
+    contentSecurityPolicy: {
+      'script-src': "'self' 'unsafe-eval' apis.google.com",
+      'frame-src': "'self' https://*.firebaseapp.com",
+      'connect-src': "'self' wss://*.firebaseio.com https://*.googleapis.com"
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
