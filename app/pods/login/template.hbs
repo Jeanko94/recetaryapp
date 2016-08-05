@@ -1,0 +1,8 @@
+<div class="form-signin col-lg-offset-4 col-lg-4">
+    <h2 class="form-signin-heading" style="color:white">Please sign in</h2>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input value={{email}} id="inputEmail" type="text" class="form-control" placeholder="Email Address" required autofocus="">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input value={{password}} id="inputPassword" class="form-control" type="password" placeholder="Password" required>
+    <button class="btn btn-lg btn-primary btn-block" {{action 'authenticate' 'password'}}>Login</button>
+</div>

@@ -13,6 +13,7 @@ module.exports = function(environment) {
       databaseURL: 'https://recetarydemo.firebaseio.com',
       storageBucket: 'recetarydemo.appspot.com',
     },
+    torii: { sessionServiceName: 'session' },
     contentSecurityPolicy: {
       'script-src': "'self' 'unsafe-eval' apis.google.com",
       'frame-src': "'self' https://*.firebaseapp.com",
