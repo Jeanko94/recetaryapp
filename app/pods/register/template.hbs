@@ -4,14 +4,17 @@
     type='text'
     class='form-control'
     value=email
-    placeholder='email'
+    placeholder='Email'
     }}
     {{input
         type='password'
         class='form-control'
         value=password
-        placeholder='password'
-      }}
+        placeholder='Password'
+    }}
     <button class="btn btn-lg btn-primary btn-block" disabled={{isDisabled}} {{action 'register'}}>{{fa-icon 'user-plus'}} Register</button>
-    {{isPasswordValid}}
+    {{#if responseMessage}}
+          <div class="alert alert-success">{{responseMessage}}</div>
+    {{/if}}
+    <br/><br/>
 </div>
