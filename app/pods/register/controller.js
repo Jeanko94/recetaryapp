@@ -1,6 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  beforeModel() {
+    if (this.get('session.isAuthenticated')) {
+      this.transitionTo('index');
+    }
+  },
   firebaseApp: Ember.inject.service(),
   isEmailValid: Ember.computed.match('email', /^.+@.+\..+$/),
   isPasswordValid: Ember.computed.match('password',/^[a-zA-z0-9]+$/),
@@ -24,6 +29,7 @@ export default Ember.Controller.extend({
         _that.set('responseMessage',`Register successful with id: ${response.get('id')}`);
         _that.set('emailAddress', '');
         _that.set('password','');
+        _that.transitionToRoute('login');
       });
     });
     }

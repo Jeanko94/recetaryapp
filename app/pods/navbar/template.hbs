@@ -23,8 +23,20 @@
             </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-          {{#nav-link-to 'login' class="nav-item nav-link right"}}<i class="fa fa-user" aria-hidden="true"></i> Login{{/nav-link-to}}
-          {{#nav-link-to 'register' class="nav-item nav-link right"}}<i class="fa fa-sign-in" aria-hidden="true"></i> Register{{/nav-link-to}}
+          {{#if session.isAuthenticated}}
+          Welcome {{session.currentUser.email}}!
+                <button
+                    class='btn btn-default navbar-btn'
+                    {{action 'logout'}}
+                >
+                    {{fa-icon 'sign-out'}} Logout
+                </button>
+          {{else}}
+              {{#nav-link-to 'login' class="nav-item nav-link right"}}<i class="fa fa-user" aria-hidden="true"></i> Login{{/nav-link-to}}
+              {{#nav-link-to 'register' class="nav-item nav-link right"}}<i class="fa fa-sign-in" aria-hidden="true"></i> Register{{/nav-link-to}}
+          {{/if}}
+
+
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

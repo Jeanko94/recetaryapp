@@ -1,8 +1,26 @@
 <div class="form-signin col-lg-offset-4 col-lg-4">
-    <h2 class="form-signin-heading" style="color:white">Please sign in</h2>
-    <label for="inputEmail" class="sr-only">Email address</label>
-    <input value={{email}} id="inputEmail" type="text" class="form-control" placeholder="Email Address" required autofocus="">
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input value={{password}} id="inputPassword" class="form-control" type="password" placeholder="Password" required>
-    <button class="btn btn-lg btn-primary btn-block" {{action 'authenticate' 'password'}}>Login</button>
+    <h2 class="form-signin-heading" style="color:white">Login</h2>
+    {{input
+        type='text'
+        class='form-control'
+        value=email
+        placeholder='Email'
+    }}
+    {{input
+        type='password'
+        class='form-control'
+        value=password
+        placeholder='Password'
+    }}
+    {{#if session.isWorking}}
+    <button class='btn btn-default' disabled='disabled'>
+        {{fa-icon 'spinner' spin=true}} Signing in...
+    </button>
+    {{else}}
+    <button class="btn btn-lg btn-primary btn-block" disabled={{isDisabled}} {{action 'login' 'password'}}>{{fa-icon 'sign-in'}} Login</button>
+    {{/if}}
+    {{#if responseMessage}}
+          <div class="alert alert-success">{{responseMessage}}</div>
+    {{/if}}
+    <br/><br/>
 </div>
