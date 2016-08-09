@@ -3,7 +3,7 @@
 <div class="well well-sm">
     <ul class="nav nav-pills">
       {{#nav-link-to 'recepies.categories.index' class="nav-item nav-link"}}List All{{/nav-link-to}}
-      {{#if isAuthenticated}}
+      {{#if session.isAuthenticated}}
       {{#nav-link-to 'recepies.categories.new' class="nav-item nav-link"}}Add New{{/nav-link-to}}
       {{/if}}
     </ul>

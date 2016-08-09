@@ -1,6 +1,18 @@
 <div class="form-signin col-lg-offset-4 col-lg-4">
     <h2 class="form-signin-heading" style="color:white">Please Register</h2>
     {{input
+      type='text'
+      class='form-control'
+      value=name
+      placeholder='Name'
+    }}
+    {{input
+      type='text'
+      class='form-control'
+      value=lastName
+      placeholder='Last Name'
+    }}
+    {{input
     type='text'
     class='form-control'
     value=email
@@ -12,9 +24,17 @@
         value=password
         placeholder='Password'
     }}
+    {{input
+        type='password'
+        class='form-control'
+        value=passwordConfirm
+        placeholder='Confirm Password'}}
     <button class="btn btn-lg btn-primary btn-block" disabled={{isDisabled}} {{action 'register'}}>{{fa-icon 'user-plus'}} Register</button>
     {{#if responseMessage}}
           <div class="alert alert-success">{{responseMessage}}</div>
     {{/if}}
     <br/><br/>
+    {{password}}
+    {{passwordConfirm}}
+    {{isPasswordEqual}}
 </div>

@@ -9,7 +9,15 @@ export default Ember.Controller.extend({
   firebaseApp: Ember.inject.service(),
   isEmailValid: Ember.computed.match('email', /^.+@.+\..+$/),
   isPasswordValid: Ember.computed.match('password',/^[a-zA-z0-9]+$/),
-  isValid: Ember.computed.and('isEmailValid', 'isPasswordValid'),
+  isPasswordEqual: Ember.computed('password', 'passwordConfirm', function(){
+    if(this.get('password') === this.get('passwordConfirm')){
+      return true;
+    }else{
+      return false;
+    }
+  }),
+  isPassword: Ember.computed.and('isPasswordValid', 'isPasswordEqual'),
+  isValid: Ember.computed.and('isEmailValid', 'isPassword'),
   isDisabled: Ember.computed.not('isValid'),
   actions: {
     register() {
@@ -17,11 +25,15 @@ export default Ember.Controller.extend({
       const auth = this.get('firebaseApp').auth();
       const email = this.get('email');
       const pass = this.get('password');
+      const name = this.get('name');
+      const lastName = this.get('lastName');
       console.log(email,pass);
       auth.createUserWithEmailAndPassword(email, pass).then((userResponse) => {
       const user = this.store.createRecord('user', {
         id: userResponse.uid,
-        email: userResponse.email
+        email: userResponse.email,
+        name: name,
+        lastName: lastName
       });
       this.set('email', '');
       this.set('password', '');
