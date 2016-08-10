@@ -12,6 +12,8 @@ Router.map(function() {
       this.route('edit', { path: '/:category_id/edit' });
     });
     this.route('ingredients');
+    this.route('list');
+    this.route('view', { path: '/:recepy_id/view' });
   });
   this.route('login');
   this.route('register');

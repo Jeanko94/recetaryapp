@@ -29,21 +29,21 @@ export default Ember.Controller.extend({
       const lastName = this.get('lastName');
       console.log(email,pass);
       auth.createUserWithEmailAndPassword(email, pass).then((userResponse) => {
-      const user = this.store.createRecord('user', {
-        id: userResponse.uid,
-        email: userResponse.email,
-        name: name,
-        lastName: lastName
+        const user = this.store.createRecord('user', {
+          id: userResponse.uid,
+          email: userResponse.email,
+          name: name,
+          lastName: lastName
+        });
+        this.set('email', '');
+        this.set('password', '');
+        return user.save().then((response)=>{
+          _that.set('responseMessage',`Register successful with id: ${response.get('id')}`);
+          _that.set('emailAddress', '');
+          _that.set('password','');
+          _that.transitionToRoute('login');
+        });
       });
-      this.set('email', '');
-      this.set('password', '');
-      return user.save().then((response)=>{
-        _that.set('responseMessage',`Register successful with id: ${response.get('id')}`);
-        _that.set('emailAddress', '');
-        _that.set('password','');
-        _that.transitionToRoute('login');
-      });
-    });
     }
   }
 });
