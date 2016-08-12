@@ -1,12 +1,16 @@
-<h2>List</h2>
+<div class="container" style="background-color:white">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Recipes
+                    <small>Here are the all the recipes</small>
+                </h1>
+            </div>
+        </div>
 
-<div class="row">
-  {{#each model as |recepy|}}
-    <div class="col-md-4">
-      {{#recepy-item item=recepy}}
-          {{#link-to 'recepies.edit' recepy.id class="btn btn-success btn-xs"}}Edit{{/link-to}}
-          <button class="btn btn-danger btn-xs" {{action 'deleteRecepy' recepy}}>Delete</button>
-      {{/recepy-item}}
-    </div>
-  {{/each}}
+        {{#each model as |recepy|}}
+          {{#recepy-item item=recepy}}
+              {{#link-to 'recepies.edit' recepy.id class="btn btn-success btn-xs"}}Edit{{/link-to}}
+              <button class="btn btn-danger btn-xs" {{action 'deleteRecepy' recepy}}>Delete</button>
+          {{/recepy-item}}
+        {{/each}}
 </div>

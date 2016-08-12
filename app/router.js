@@ -7,13 +7,14 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('recepies', function() {
-    this.route('categories', function() {
-      this.route('new');
-      this.route('edit', { path: '/:category_id/edit' });
-    });
-    this.route('ingredients');
     this.route('list',{path: '/:category_id/list'});
     this.route('view', { path: '/:recepy_id/view' });
+    this.route('new');
+    this.route('edit', { path: '/:recepy_id/edit' });
+  });
+  this.route('categories', function() {
+    this.route('new');
+    this.route('edit', { path: '/:category_id/edit' });
   });
   this.route('login');
   this.route('register');

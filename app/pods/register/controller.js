@@ -1,11 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  beforeModel() {
-    if (this.get('session.isAuthenticated')) {
-      this.transitionTo('index');
-    }
-  },
+
   firebaseApp: Ember.inject.service(),
   isEmailValid: Ember.computed.match('email', /^.+@.+\..+$/),
   isPasswordValid: Ember.computed.match('password',/^[a-zA-z0-9]+$/),
