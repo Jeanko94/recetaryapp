@@ -1,0 +1,12 @@
+<h2>List</h2>
+
+<div class="row">
+  {{#each model as |recepy|}}
+    <div class="col-md-4">
+      {{#recepy-item item=recepy}}
+          {{#link-to 'recepies.edit' recepy.id class="btn btn-success btn-xs"}}Edit{{/link-to}}
+          <button class="btn btn-danger btn-xs" {{action 'deleteRecepy' recepy}}>Delete</button>
+      {{/recepy-item}}
+    </div>
+  {{/each}}
+</div>

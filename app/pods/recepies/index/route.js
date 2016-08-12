@@ -1,15 +1,15 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model(){
-    return this.store.findAll('category');
+  model(params){
+    return this.store.findRecord('recepy', params.recepy_id);
   },
   actions: {
-    deleteCategory(category) {
+    deleteRecepy(recepy) {
       let confirmation = confirm('Are you sure?');
 
       if (confirmation) {
-        category.destroyRecord();
+        recepy.destroyRecord();
       }
     }
   }

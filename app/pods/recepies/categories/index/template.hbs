@@ -10,7 +10,7 @@
         {{#each model as |category|}}
           {{#category-item item=category}}
               {{#link-to 'recepies.categories.edit' category.id class="btn btn-success btn-xs"}}Edit{{/link-to}}
-              <button class="btn btn-danger btn-xs" {{action 'deleteLibrary' library}}>Delete</button>
+              <button class="btn btn-danger btn-xs" {{action 'deleteCategory' category}}>Delete</button>
           {{/category-item}}
         {{/each}}
 </div>
