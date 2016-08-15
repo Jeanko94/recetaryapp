@@ -18,6 +18,10 @@ Router.map(function() {
   });
   this.route('login');
   this.route('register');
+  this.route('ingredients', function() {
+    this.route('new');
+    this.route('edit', { path: '/:ingredient_id/edit' });
+  });
 });
 
 export default Router;

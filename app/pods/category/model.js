@@ -7,7 +7,7 @@ import Ember from 'ember';
 export default DS.Model.extend({
   name: DS.attr('string'),
   description: DS.attr('string'),
-  recepies: DS.hasMany('recepy'),
+  recepies: DS.hasMany('recepy', {async: true}),
   imgLink: DS.attr('string'),
   isValid: Ember.computed.notEmpty('name')
 });

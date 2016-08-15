@@ -1,0 +1,11 @@
+<h1 style="color:white">Ingredients</h1>
+
+<div class="well well-sm">
+    <ul class="nav nav-pills">
+      {{#nav-link-to 'ingredients.index' class="nav-item nav-link"}}List All{{/nav-link-to}}
+      {{#if session.isAuthenticated}}
+      {{#nav-link-to 'ingredients.new' class="nav-item nav-link"}}Add New{{/nav-link-to}}
+      {{/if}}
+    </ul>
+</div>
+{{outlet}}

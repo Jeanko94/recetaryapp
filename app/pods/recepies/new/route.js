@@ -9,14 +9,16 @@ export default Ember.Route.extend({
   model:function() {
     return Ember.RSVP.hash({
       categories: this.store.findAll('category'),
-      newRecepy: this.store.createRecord('recepy')
+      recepy: this.store.createRecord('recepy'),
+      ingredients: this.store.findAll('ingredient')
     });
   },
   setupController:function(controller,model){
     this._super(controller,model);
 
-    controller.set('newRecepy',model.newRecepy);
+    controller.set('newRecepy',model.recepy);
     controller.set('categories',model.categories);
+    controller.set('ingredients',model.ingredients);
     controller.set('title','Create a new Recipe');
     controller.set('buttonLabel','Create');
   },
@@ -24,11 +26,8 @@ export default Ember.Route.extend({
     this.render('recepies/form');
   },
   actions: {
-    saveCategory(category, recepy){
-      recepy.set('category',category);
-    },
     saveRecepy(newRecepy,category) {
-      newRecepy.category = category;
+      newRecepy.set('category',category);
       newRecepy.save().then(
         () => category.save(),
         this.transitionTo('recepies'));

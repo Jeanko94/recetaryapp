@@ -7,11 +7,8 @@ export default Ember.Component.extend({
   selectedCategory: null,
   actions:{
     buttonClicked(param1,param2){
-      this.sendAction('action',param1,param2);
-    },
-    saveCategory(category){
-       this.set('selectedCategory', category);
-       confirm(category.name);
+      let category = this.get('categories').find((record) => record.id === param2);
+      this.sendAction('action',param1,category);
     }
   }
 });

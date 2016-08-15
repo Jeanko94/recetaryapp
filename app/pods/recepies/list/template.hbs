@@ -1,1 +1,15 @@
-{{outlet}}
+<div class="container" style="background-color:white">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{{model.name}} Recipes
+                    <small>Here are the all the recipes of the category: {{model.name}}</small>
+                </h1>
+            </div>
+        </div>
+        {{#each model.recepies as |recepy|}}
+          {{#recepy-item item=recepy}}
+              {{#link-to 'recepies.edit' recepy.id class="btn btn-success btn-xs"}}Edit{{/link-to}}
+              <button class="btn btn-danger btn-xs" {{action 'deleteRecepy' recepy}}>Delete</button>
+          {{/recepy-item}}
+        {{/each}}
+</div>
