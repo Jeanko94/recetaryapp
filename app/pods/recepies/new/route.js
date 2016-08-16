@@ -15,7 +15,7 @@ export default Ember.Route.extend({
   },
   setupController:function(controller,model){
     this._super(controller,model);
-
+    
     controller.set('newRecepy',model.recepy);
     controller.set('categories',model.categories);
     controller.set('ingredients',model.ingredients);
@@ -30,6 +30,10 @@ export default Ember.Route.extend({
       newRecepy.set('category',category);
       newRecepy.save().then(
         () => category.save(),
+        newRecepy.get('ingredients').forEach(ingredient => {
+          ingredient.get('recepies').addObject(newRecepy);
+        }),
+        newRecepy.get('ingredients').invoke('save'),
         this.transitionTo('recepies'));
     },
 

@@ -4,8 +4,11 @@ import Ember from 'ember';
 export default DS.Model.extend({
   name: DS.attr('string'),
   description: DS.attr('string'),
-  quantity: DS.attr('string'),
+  displayName: Ember.computed('name','description',function(){
+    return this.get('description') + ' ' + this.get('name');
+  }),
+  hasRecepies: Ember.computed.notEmpty('recepies'),
   imgLink: DS.attr('string'),
-  recepy: DS.hasMany('recepy', {async: true}),
+  recepies: DS.hasMany('recepy', {async: true}),
   isValid: Ember.computed.notEmpty('name')
 });
