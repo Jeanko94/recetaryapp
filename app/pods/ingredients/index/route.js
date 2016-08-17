@@ -7,7 +7,7 @@ export default Ember.Route.extend({
   actions: {
     deleteIngredient(ingredient) {
 
-      if(!ingredient.hasRecepies){
+      if(!ingredient.get('hasRecepies')){
         let confirmation = confirm('Are you sure?');
 
         if (confirmation) {
