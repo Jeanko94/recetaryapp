@@ -7,8 +7,8 @@ export default DS.Model.extend({
   displayName: Ember.computed('name','description',function(){
     return this.get('description') + ' ' + this.get('name');
   }),
-  hasRecepies: Ember.computed.notEmpty('recepies'),
+  hasRecepies: Ember.computed.notEmpty('ingredientsAmount'),
   imgLink: DS.attr('string'),
-  recepies: DS.hasMany('recepy', {async: true}),
+  ingredientsAmount: DS.hasMany('ingredient-amount', {async: true}),
   isValid: Ember.computed.notEmpty('name')
 });

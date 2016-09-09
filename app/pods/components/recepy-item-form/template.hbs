@@ -35,14 +35,22 @@
     <div class="form-group">
         <label class="col-sm-2 control-label" style="color:white">Ingredients</label>
         <div class="col-sm-10">
-          {{select-2
-              content=ingredients
-              optionDescriptionPath="displayName"
-              value=selectedIngredients
-              multiple=true
-              placeholder="Choose the ingredients"
-          }}
+          <select class="form-control" onchange={{action (mut selectedIngredient) value="target.value"}}>
+            <option value="">
+            </option>
+            {{#each ingredients as |ingredient|}}
+              <option value={{ingredient.id}}>
+                {{ingredient.name}}
+              </option>
+            {{/each}}
+          </select>
+          {{input type="text" value=ingredientQuantity class="form-control" placeholder="Quantity"}}
+          {{input type="text" value=ingredientType class="form-control" placeholder="Type of Measure"}}
+          <button type="button" class="btn btn-default" {{action 'ingredientAdd' selectedIngredient ingredientQuantity ingredientType}} disabled="{{unless selectedIngredient 'disabled'}}">Add Ingredient</button>
         </div>
+        {{#each ingredient as |selectedIngredients|}}
+          {{ingredient}}
+        {{/each}}
     </div>
 
     <div class="form-group" >
